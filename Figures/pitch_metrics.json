@@ -1,0 +1,608 @@
+{
+  "parameters": {
+    "f0_unit": "semitones",
+    "correlation_domain": "semitones",
+    "original_timing": "jointly voiced frames on the common 10 ms frame index",
+    "word_aligned": "jointly voiced samples on 100 normalized points per matched word"
+  },
+  "conversation": {
+    "raw": {
+      "5_1_d2442": {
+        "BaseCSS": {
+          "f0_rmse_semitones": 3.986776974145393,
+          "pitch_correlation": 0.42092704860298397,
+          "jointly_voiced_points": 89
+        },
+        "FCTalker": {
+          "f0_rmse_semitones": 5.054407195430411,
+          "pitch_correlation": 0.13014433487032437,
+          "jointly_voiced_points": 88
+        },
+        "ECSS": {
+          "f0_rmse_semitones": 2.5368949237678713,
+          "pitch_correlation": 0.7054607559382635,
+          "jointly_voiced_points": 132
+        },
+        "JELLY": {
+          "f0_rmse_semitones": 2.8654058282732957,
+          "pitch_correlation": 0.5007700251708479,
+          "jointly_voiced_points": 88
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 2.182863700619177,
+          "pitch_correlation": 0.8565816547103897,
+          "jointly_voiced_points": 121
+        }
+      },
+      "6_1_d1583": {
+        "BaseCSS": {
+          "f0_rmse_semitones": 2.57316239799585,
+          "pitch_correlation": 0.7177104292094318,
+          "jointly_voiced_points": 200
+        },
+        "FCTalker": {
+          "f0_rmse_semitones": 2.559188785385356,
+          "pitch_correlation": 0.6897171704224179,
+          "jointly_voiced_points": 184
+        },
+        "ECSS": {
+          "f0_rmse_semitones": 3.246164671149061,
+          "pitch_correlation": 0.3251125810064491,
+          "jointly_voiced_points": 169
+        },
+        "JELLY": {
+          "f0_rmse_semitones": 2.5163774653004003,
+          "pitch_correlation": 0.6932317846050734,
+          "jointly_voiced_points": 197
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 3.43732689111164,
+          "pitch_correlation": 0.1369981669823155,
+          "jointly_voiced_points": 117
+        }
+      },
+      "4_1_d1248": {
+        "BaseCSS": {
+          "f0_rmse_semitones": 4.7848451233501414,
+          "pitch_correlation": -0.09027398893268565,
+          "jointly_voiced_points": 127
+        },
+        "FCTalker": {
+          "f0_rmse_semitones": 5.541298851390704,
+          "pitch_correlation": -0.36182200997115815,
+          "jointly_voiced_points": 103
+        },
+        "ECSS": {
+          "f0_rmse_semitones": 5.788778773769842,
+          "pitch_correlation": -0.020226308950713597,
+          "jointly_voiced_points": 104
+        },
+        "JELLY": {
+          "f0_rmse_semitones": 5.180424376652162,
+          "pitch_correlation": -0.35256446289978566,
+          "jointly_voiced_points": 91
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 3.3232457169686067,
+          "pitch_correlation": 0.13351096394392956,
+          "jointly_voiced_points": 97
+        }
+      },
+      "4_1_d808": {
+        "BaseCSS": {
+          "f0_rmse_semitones": 7.229461303211858,
+          "pitch_correlation": -0.10459134036236845,
+          "jointly_voiced_points": 115
+        },
+        "FCTalker": {
+          "f0_rmse_semitones": 8.763245928964258,
+          "pitch_correlation": -0.350980918711847,
+          "jointly_voiced_points": 91
+        },
+        "ECSS": {
+          "f0_rmse_semitones": 5.60578747725163,
+          "pitch_correlation": -0.11018386361013952,
+          "jointly_voiced_points": 92
+        },
+        "JELLY": {
+          "f0_rmse_semitones": 5.771412360302763,
+          "pitch_correlation": -0.022592402767675965,
+          "jointly_voiced_points": 110
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 3.185193487632823,
+          "pitch_correlation": 0.4359875299678055,
+          "jointly_voiced_points": 118
+        }
+      },
+      "9_1_d2531": {
+        "BaseCSS": {
+          "f0_rmse_semitones": 4.173067238562065,
+          "pitch_correlation": 0.09692135061799137,
+          "jointly_voiced_points": 109
+        },
+        "FCTalker": {
+          "f0_rmse_semitones": 2.97181729518755,
+          "pitch_correlation": 0.5127545720079575,
+          "jointly_voiced_points": 133
+        },
+        "ECSS": {
+          "f0_rmse_semitones": 4.634464151332932,
+          "pitch_correlation": -0.32291187536061,
+          "jointly_voiced_points": 103
+        },
+        "JELLY": {
+          "f0_rmse_semitones": 2.752232587976851,
+          "pitch_correlation": 0.5291196101337072,
+          "jointly_voiced_points": 130
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 3.638972624753119,
+          "pitch_correlation": 0.5175169673388901,
+          "jointly_voiced_points": 141
+        }
+      },
+      "5_1_d312": {
+        "BaseCSS": {
+          "f0_rmse_semitones": 4.465172969362596,
+          "pitch_correlation": 0.3685688177967373,
+          "jointly_voiced_points": 282
+        },
+        "FCTalker": {
+          "f0_rmse_semitones": 4.992950605533391,
+          "pitch_correlation": 0.15364718798829227,
+          "jointly_voiced_points": 304
+        },
+        "ECSS": {
+          "f0_rmse_semitones": 5.770573229707005,
+          "pitch_correlation": -0.041406416433594585,
+          "jointly_voiced_points": 272
+        },
+        "JELLY": {
+          "f0_rmse_semitones": 4.6371954617066,
+          "pitch_correlation": 0.3797928458377311,
+          "jointly_voiced_points": 269
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 5.044547164775066,
+          "pitch_correlation": 0.17876294803507706,
+          "jointly_voiced_points": 265
+        }
+      }
+    },
+    "aligned": {
+      "5_1_d2442": {
+        "BaseCSS": {
+          "f0_rmse_semitones": 3.0754350701510518,
+          "pitch_correlation": 0.8568162382847272,
+          "jointly_voiced_points": 599
+        },
+        "FCTalker": {
+          "f0_rmse_semitones": 3.135787994829932,
+          "pitch_correlation": 0.912915627943933,
+          "jointly_voiced_points": 567
+        },
+        "ECSS": {
+          "f0_rmse_semitones": 1.736470803676405,
+          "pitch_correlation": 0.9052600586620897,
+          "jointly_voiced_points": 608
+        },
+        "JELLY": {
+          "f0_rmse_semitones": 2.5652541438491805,
+          "pitch_correlation": 0.9381060587485706,
+          "jointly_voiced_points": 590
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 1.7005186484871264,
+          "pitch_correlation": 0.8822803071198786,
+          "jointly_voiced_points": 599
+        }
+      },
+      "6_1_d1583": {
+        "BaseCSS": {
+          "f0_rmse_semitones": 2.864644170970276,
+          "pitch_correlation": 0.6299530794257544,
+          "jointly_voiced_points": 855
+        },
+        "FCTalker": {
+          "f0_rmse_semitones": 2.1310160121501704,
+          "pitch_correlation": 0.8573786939827857,
+          "jointly_voiced_points": 927
+        },
+        "ECSS": {
+          "f0_rmse_semitones": 1.929509113668446,
+          "pitch_correlation": 0.8659461219917566,
+          "jointly_voiced_points": 947
+        },
+        "JELLY": {
+          "f0_rmse_semitones": 2.6276280771611664,
+          "pitch_correlation": 0.6281783169366075,
+          "jointly_voiced_points": 901
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 1.8495120567788805,
+          "pitch_correlation": 0.8574491176614393,
+          "jointly_voiced_points": 933
+        }
+      },
+      "4_1_d1248": {
+        "BaseCSS": {
+          "f0_rmse_semitones": 3.062577104432684,
+          "pitch_correlation": 0.40759685684090535,
+          "jointly_voiced_points": 719
+        },
+        "FCTalker": {
+          "f0_rmse_semitones": 2.6561241423863655,
+          "pitch_correlation": 0.6714781129464856,
+          "jointly_voiced_points": 712
+        },
+        "ECSS": {
+          "f0_rmse_semitones": 2.1206404049944667,
+          "pitch_correlation": 0.7157280371154832,
+          "jointly_voiced_points": 611
+        },
+        "JELLY": {
+          "f0_rmse_semitones": 2.4207662466248836,
+          "pitch_correlation": 0.6065952166329753,
+          "jointly_voiced_points": 712
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 3.4622398858737875,
+          "pitch_correlation": 0.5986967791622302,
+          "jointly_voiced_points": 719
+        }
+      },
+      "4_1_d808": {
+        "BaseCSS": {
+          "f0_rmse_semitones": 3.2728199018741635,
+          "pitch_correlation": 0.45182512929375407,
+          "jointly_voiced_points": 507
+        },
+        "FCTalker": {
+          "f0_rmse_semitones": 5.049000605253133,
+          "pitch_correlation": 0.3075050742528475,
+          "jointly_voiced_points": 498
+        },
+        "ECSS": {
+          "f0_rmse_semitones": 2.771483857157122,
+          "pitch_correlation": 0.768076850583151,
+          "jointly_voiced_points": 551
+        },
+        "JELLY": {
+          "f0_rmse_semitones": 2.760806813453377,
+          "pitch_correlation": 0.5817661893429449,
+          "jointly_voiced_points": 533
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 1.9393595323972495,
+          "pitch_correlation": 0.7847925186306661,
+          "jointly_voiced_points": 524
+        }
+      },
+      "9_1_d2531": {
+        "BaseCSS": {
+          "f0_rmse_semitones": 1.5646693170549801,
+          "pitch_correlation": 0.876905467523306,
+          "jointly_voiced_points": 547
+        },
+        "FCTalker": {
+          "f0_rmse_semitones": 1.3323344099773988,
+          "pitch_correlation": 0.9153756675978741,
+          "jointly_voiced_points": 568
+        },
+        "ECSS": {
+          "f0_rmse_semitones": 1.463321524428769,
+          "pitch_correlation": 0.8637754934928393,
+          "jointly_voiced_points": 586
+        },
+        "JELLY": {
+          "f0_rmse_semitones": 2.268144001667284,
+          "pitch_correlation": 0.7330806691365753,
+          "jointly_voiced_points": 577
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 2.549755988986205,
+          "pitch_correlation": 0.7861074492368669,
+          "jointly_voiced_points": 612
+        }
+      },
+      "5_1_d312": {
+        "BaseCSS": {
+          "f0_rmse_semitones": 3.6000120890445158,
+          "pitch_correlation": 0.6083502875961402,
+          "jointly_voiced_points": 1243
+        },
+        "FCTalker": {
+          "f0_rmse_semitones": 3.8336346740352094,
+          "pitch_correlation": 0.3641348013076561,
+          "jointly_voiced_points": 1211
+        },
+        "ECSS": {
+          "f0_rmse_semitones": 4.446832331889799,
+          "pitch_correlation": 0.6003415411730377,
+          "jointly_voiced_points": 1204
+        },
+        "JELLY": {
+          "f0_rmse_semitones": 3.210866070218098,
+          "pitch_correlation": 0.5877731430012727,
+          "jointly_voiced_points": 1219
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 3.549531234753106,
+          "pitch_correlation": 0.5615729104141576,
+          "jointly_voiced_points": 1216
+        }
+      }
+    }
+  },
+  "ablation": {
+    "raw": {
+      "5_1_d2442": {
+        "Embedding": {
+          "f0_rmse_semitones": 3.5007767174653757,
+          "pitch_correlation": 0.7599375937107459,
+          "jointly_voiced_points": 103
+        },
+        "GRU": {
+          "f0_rmse_semitones": 2.995684982612394,
+          "pitch_correlation": 0.7485643346087832,
+          "jointly_voiced_points": 113
+        },
+        "GRU-DialogueRNN": {
+          "f0_rmse_semitones": 3.5464057136703664,
+          "pitch_correlation": 0.8132835158430679,
+          "jointly_voiced_points": 141
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 2.182863700619177,
+          "pitch_correlation": 0.8565816547103897,
+          "jointly_voiced_points": 121
+        }
+      },
+      "6_1_d1583": {
+        "Embedding": {
+          "f0_rmse_semitones": 3.2658205350437233,
+          "pitch_correlation": 0.26202092680414674,
+          "jointly_voiced_points": 164
+        },
+        "GRU": {
+          "f0_rmse_semitones": 4.604016760044951,
+          "pitch_correlation": 0.0022101104383581522,
+          "jointly_voiced_points": 123
+        },
+        "GRU-DialogueRNN": {
+          "f0_rmse_semitones": 3.950196774366062,
+          "pitch_correlation": 0.4751765211694871,
+          "jointly_voiced_points": 132
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 3.43732689111164,
+          "pitch_correlation": 0.1369981669823155,
+          "jointly_voiced_points": 117
+        }
+      },
+      "4_1_d1248": {
+        "Embedding": {
+          "f0_rmse_semitones": 3.8977670917295923,
+          "pitch_correlation": 0.15511475988317577,
+          "jointly_voiced_points": 94
+        },
+        "GRU": {
+          "f0_rmse_semitones": 4.238160738044091,
+          "pitch_correlation": -0.1477960544283931,
+          "jointly_voiced_points": 98
+        },
+        "GRU-DialogueRNN": {
+          "f0_rmse_semitones": 3.5170258055100803,
+          "pitch_correlation": 0.22115450140980888,
+          "jointly_voiced_points": 102
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 3.3232457169686067,
+          "pitch_correlation": 0.13351096394392956,
+          "jointly_voiced_points": 97
+        }
+      },
+      "4_1_d808": {
+        "Embedding": {
+          "f0_rmse_semitones": 3.7773329743504784,
+          "pitch_correlation": 0.13596371981204164,
+          "jointly_voiced_points": 107
+        },
+        "GRU": {
+          "f0_rmse_semitones": 3.82572364619405,
+          "pitch_correlation": 0.2926667954279995,
+          "jointly_voiced_points": 139
+        },
+        "GRU-DialogueRNN": {
+          "f0_rmse_semitones": 4.082684163555224,
+          "pitch_correlation": 0.478912629251957,
+          "jointly_voiced_points": 139
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 3.185193487632823,
+          "pitch_correlation": 0.4359875299678055,
+          "jointly_voiced_points": 118
+        }
+      },
+      "9_1_d2531": {
+        "Embedding": {
+          "f0_rmse_semitones": 4.792779685784999,
+          "pitch_correlation": -0.19321448566002655,
+          "jointly_voiced_points": 110
+        },
+        "GRU": {
+          "f0_rmse_semitones": 5.356435210694247,
+          "pitch_correlation": -0.14875854804260857,
+          "jointly_voiced_points": 103
+        },
+        "GRU-DialogueRNN": {
+          "f0_rmse_semitones": 3.0599168641037804,
+          "pitch_correlation": 0.637972848587437,
+          "jointly_voiced_points": 135
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 3.638972624753119,
+          "pitch_correlation": 0.5175169673388901,
+          "jointly_voiced_points": 141
+        }
+      },
+      "5_1_d312": {
+        "Embedding": {
+          "f0_rmse_semitones": 5.601002769265907,
+          "pitch_correlation": -0.16375603585613774,
+          "jointly_voiced_points": 259
+        },
+        "GRU": {
+          "f0_rmse_semitones": 5.554947389885542,
+          "pitch_correlation": -0.04134919094552052,
+          "jointly_voiced_points": 261
+        },
+        "GRU-DialogueRNN": {
+          "f0_rmse_semitones": 4.784484212158292,
+          "pitch_correlation": 0.21684459789286348,
+          "jointly_voiced_points": 252
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 5.044547164775066,
+          "pitch_correlation": 0.17876294803507706,
+          "jointly_voiced_points": 265
+        }
+      }
+    },
+    "aligned": {
+      "5_1_d2442": {
+        "Embedding": {
+          "f0_rmse_semitones": 3.204690603714387,
+          "pitch_correlation": 0.8608024259860791,
+          "jointly_voiced_points": 614
+        },
+        "GRU": {
+          "f0_rmse_semitones": 3.349630611271259,
+          "pitch_correlation": 0.8496824064319046,
+          "jointly_voiced_points": 606
+        },
+        "GRU-DialogueRNN": {
+          "f0_rmse_semitones": 3.3360652659326098,
+          "pitch_correlation": 0.7937995453408635,
+          "jointly_voiced_points": 604
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 1.7005186484871264,
+          "pitch_correlation": 0.8822803071198786,
+          "jointly_voiced_points": 599
+        }
+      },
+      "6_1_d1583": {
+        "Embedding": {
+          "f0_rmse_semitones": 3.1501488850724377,
+          "pitch_correlation": 0.3482360628047345,
+          "jointly_voiced_points": 903
+        },
+        "GRU": {
+          "f0_rmse_semitones": 1.993085487262769,
+          "pitch_correlation": 0.7968514508918755,
+          "jointly_voiced_points": 868
+        },
+        "GRU-DialogueRNN": {
+          "f0_rmse_semitones": 2.559031917756924,
+          "pitch_correlation": 0.7481851641060909,
+          "jointly_voiced_points": 860
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 1.8495120567788805,
+          "pitch_correlation": 0.8574491176614393,
+          "jointly_voiced_points": 933
+        }
+      },
+      "4_1_d1248": {
+        "Embedding": {
+          "f0_rmse_semitones": 2.5912808901535915,
+          "pitch_correlation": 0.6363321546976112,
+          "jointly_voiced_points": 676
+        },
+        "GRU": {
+          "f0_rmse_semitones": 2.824922501863249,
+          "pitch_correlation": 0.600972564869204,
+          "jointly_voiced_points": 734
+        },
+        "GRU-DialogueRNN": {
+          "f0_rmse_semitones": 3.0110755713781314,
+          "pitch_correlation": 0.5379148327069814,
+          "jointly_voiced_points": 733
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 3.4622398858737875,
+          "pitch_correlation": 0.5986967791622302,
+          "jointly_voiced_points": 719
+        }
+      },
+      "4_1_d808": {
+        "Embedding": {
+          "f0_rmse_semitones": 2.4910906615330792,
+          "pitch_correlation": 0.7343304532158658,
+          "jointly_voiced_points": 512
+        },
+        "GRU": {
+          "f0_rmse_semitones": 2.5146889407851845,
+          "pitch_correlation": 0.6969213670787803,
+          "jointly_voiced_points": 529
+        },
+        "GRU-DialogueRNN": {
+          "f0_rmse_semitones": 2.607740774546456,
+          "pitch_correlation": 0.7521280194109946,
+          "jointly_voiced_points": 498
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 1.9393595323972495,
+          "pitch_correlation": 0.7847925186306661,
+          "jointly_voiced_points": 524
+        }
+      },
+      "9_1_d2531": {
+        "Embedding": {
+          "f0_rmse_semitones": 2.3427746943637295,
+          "pitch_correlation": 0.873217105018241,
+          "jointly_voiced_points": 591
+        },
+        "GRU": {
+          "f0_rmse_semitones": 2.927507446140264,
+          "pitch_correlation": 0.8759704352042139,
+          "jointly_voiced_points": 518
+        },
+        "GRU-DialogueRNN": {
+          "f0_rmse_semitones": 2.012515769980286,
+          "pitch_correlation": 0.8479877781713847,
+          "jointly_voiced_points": 577
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 2.549755988986205,
+          "pitch_correlation": 0.7861074492368669,
+          "jointly_voiced_points": 612
+        }
+      },
+      "5_1_d312": {
+        "Embedding": {
+          "f0_rmse_semitones": 3.428270039073521,
+          "pitch_correlation": 0.5611638253923276,
+          "jointly_voiced_points": 1213
+        },
+        "GRU": {
+          "f0_rmse_semitones": 3.8204605523323454,
+          "pitch_correlation": 0.44704344699289406,
+          "jointly_voiced_points": 1207
+        },
+        "GRU-DialogueRNN": {
+          "f0_rmse_semitones": 3.18207177396946,
+          "pitch_correlation": 0.6612182224076228,
+          "jointly_voiced_points": 1250
+        },
+        "Proposed": {
+          "f0_rmse_semitones": 3.549531234753106,
+          "pitch_correlation": 0.5615729104141576,
+          "jointly_voiced_points": 1216
+        }
+      }
+    }
+  }
+}
