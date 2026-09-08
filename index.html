@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Context-Conditioned Continuous Emotional Attribute Modeling for Conversational Speech Synthesis — Word-Aligned</title>
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/heading.css" rel="stylesheet">
+  <link href="css/body.css" rel="stylesheet">
+  <style>
+    :root { --accent:#1b7f3c; --ink:#272727; --muted:#666; --line:#e2e6e2; --panel:#fbfcfb; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    .header-links { display:flex; justify-content:center; margin-top:18px; }
+    .header-link-btn { display:inline-flex; padding:8px 14px; color:#111; font-weight:700; text-decoration:none; background:#fff; border:1px solid rgba(0,0,0,.15); border-radius:999px; }
+    .section-note { max-width:850px; margin:18px auto 34px; color:var(--muted); font-size:.92rem; line-height:1.55; text-align:center; }
+    .sample-card { margin-bottom:42px; padding:28px; background:#fff; border:1px solid #e8e8e8; border-radius:18px; box-shadow:0 3px 12px rgba(0,0,0,.07); }
+    .sample-heading { margin:0 0 18px; color:#555; font-size:.82rem; letter-spacing:.04em; text-transform:uppercase; }
+    .script-box { display:grid; grid-template-columns:minmax(0,1fr) 270px; gap:24px; align-items:center; margin-bottom:28px; padding:20px; background:#f4f5f4; border-radius:11px; }
+    .turn-label { margin-bottom:5px; font-weight:700; }
+    .turn-text { margin:0 0 13px; line-height:1.55; }
+    .turn-text:last-child { margin-bottom:0; }
+    .previous-audio,.reference-item { text-align:center; }
+    .audio-label,.system-name { margin-bottom:7px; font-size:.84rem; font-weight:700; }
+    audio { width:100%; max-width:310px; }
+    .category-title { display:flex; align-items:center; gap:14px; margin:30px 0 14px; color:#444; font-size:.92rem; font-weight:700; text-align:center; }
+    .category-title::before,.category-title::after { flex:1; border-bottom:1px solid #ddd; content:""; }
+    .reference-grid { display:grid; grid-template-columns:repeat(2,minmax(0,270px)); justify-content:center; gap:22px; }
+    .reference-item { padding:12px; }
+    .system-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; align-items:start; }
+    .system-grid.single { grid-template-columns:minmax(0,540px); justify-content:center; }
+    .system-row { display:flex; flex-direction:column; min-width:0; padding:14px; background:var(--panel); border:1px solid var(--line); border-radius:12px; transition:120ms ease; }
+    .system-row.is-playing { border-color:rgba(27,127,60,.55); box-shadow:0 0 0 2px rgba(27,127,60,.08); }
+    .system-row.proposed-row { background:rgba(27,127,60,.035); }
+    .system-name { text-align:center; }
+    .system-name.ours { color:var(--accent); }
+    .pitch-figure { min-width:0; margin:0; }
+    .pitch-image-wrap { position:relative; overflow:hidden; background:#fff; border:1px solid #e6e6e6; border-radius:8px; }
+    .pitch-image { display:block; width:100%; max-width:100%; height:auto; }
+    .pitch-caption { margin-top:7px; color:var(--muted); font-size:.78rem; line-height:1.45; }
+    .pitch-metrics { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin:10px 0 12px; }
+    .pitch-metric { padding:8px; color:#444; font-size:.78rem; font-weight:700; text-align:center; background:#fff; border:1px solid #e5e8e5; border-radius:7px; }
+    .system-audio { margin-top:auto; text-align:center; }
+    .pitch-playhead { position:absolute; top:4%; bottom:19%; left:10%; width:2px; opacity:0; pointer-events:none; background:#d62828; box-shadow:0 0 0 1px rgba(255,255,255,.75); transform:translateX(-1px); }
+    .pitch-playhead.is-visible { opacity:.9; }
+    .playing-status { min-height:20px; margin-top:8px; color:var(--accent); font-size:.85rem; font-weight:700; text-align:right; }
+    .model-grid-3 { display:grid; grid-template-columns:repeat(2,minmax(260px,1fr)); gap:24px; width:100%; max-width:760px; margin:0 auto; }
+    .model-box { min-width:0; padding:14px; text-align:center; }
+    .model-box .ours { color:var(--accent); font-weight:700; }
+    @media (max-width:767.98px) {
+      .masthead .container { flex-direction:column; align-items:center !important; text-align:center; }
+      .masthead-heading { max-width:100%; font-size:2.15rem; overflow-wrap:normal; }
+      .sample-card { padding:18px 12px; }
+      .script-box { grid-template-columns:minmax(0,1fr); }
+      .reference-grid { grid-template-columns:minmax(0,1fr); }
+      .system-grid,.system-grid.single { grid-template-columns:minmax(0,1fr); }
+      .pitch-metrics { grid-template-columns:minmax(0,1fr); }
+      .model-grid-3 { grid-template-columns:minmax(0,1fr); justify-items:stretch; width:100%; max-width:none; margin-left:0; column-gap:0; }
+      .model-box { width:100%; }
+      .model-box audio { width:100%; max-width:100%; }
+      .previous-audio,.reference-item { text-align:left; }
+      .playing-status { text-align:left; }
+    }
+  </style>
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
+    <div class="container">
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#cross_speaker">Conversation <br> Speech Synthesis</a></li>
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#ablation">Ablation Study</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="masthead bg-white text-left">
+    <div class="container d-flex align-items-center">
+      <h1 class="masthead-heading mb-0">Context-Conditioned Continuous Emotional Attribute Modeling for Conversational Speech Synthesis</h1>
+    </div>
+    <div class="header-links">
+      <a class="header-link-btn" href="https://github.com/EmoDemoPage/CCEA-CCS" target="_blank" rel="noopener">Source Code</a>
+    </div>
+  </header>
+
+  <section class="page-section" id="cross_speaker">
+    <div class="container">
+      <div class="text-center"><h2 class="page-section-heading text-secondary mb-0 d-inline-block">Conversation Speech Synthesis</h2></div>
+      <p class="section-note">
+        Matching Ground Truth and model word intervals are normalized to a shared word axis using Whisper-derived boundaries. Unvoiced regions remain omitted from the contours and metrics.
+      </p>
+      <div id="demo-samples"></div>
+    </div>
+  </section>
+
+  <section class="page-section" id="ablation">
+    <div class="container">
+      <div class="text-center"><h2 class="page-section-heading text-secondary mb-0 d-inline-block">Ablation Study</h2></div>
+      <br><br>
+      <div id="ablation-samples"></div>
+    </div>
+  </section>
+
+  <script>
+    window.AFFECTFLOW_PLOT_MODE = "aligned";
+    (() => {
+      "use strict";
+      const mode = window.AFFECTFLOW_PLOT_MODE;
+      const samples = [
+        {id:"5_1_d2442",previous:["A: Fine, thank you, and you?","B: Pretty good. What brings you here?"],current:"A: I came to see my uncle. He lives in the next block."},
+        {id:"6_1_d1583",previous:["A: Brown, please.","B: Here are some nice brown hats. Try this hat on. It's a very good one."],current:"A: Yes, I like this one. It goes very well with my coat. How much is it?"},
+        {id:"4_1_d1248",previous:["A: A denim shirt and one of Serena Williams' used tennis rackets!","B: Your idol! Wow! You're even better at finding stuff than me!"],current:"A: Yep. I placed a bid for the shirt. The minimum was ten so i bet fifty!"},
+        {id:"4_1_d808",previous:["A: What's the matter?","B: Umm, the food station was as crowded as usual."],current:"A: I see. You simply can't blame the server for this."},
+        {id:"9_1_d2531",previous:["A: It was written by Howard Sounds.","B: Umm, what do you think about it?"],current:"A: It's great! I've learned a lot from reading it."},
+        {id:"5_1_d312",previous:["A: A garage sale... That's where people check out cars, right?","B: What? Cars? Umm, are you serious?"],current:"A: I'm pulling your leg, Paul. I'm a shopping queen, remember? So of course i know what a garage sale is all about!"}
+      ];
+      const conversationSampleIds = new Set(["5_1_d2442","6_1_d1583","4_1_d808","9_1_d2531"]);
+      const conversationSamples = samples.filter(sample=>conversationSampleIds.has(sample.id));
+      const categories = [
+        {label:"Context Representation",models:[{label:"BaseCSS",dir:"BaseCSS",slug:"basecss"},{label:"FCTalker",dir:"FCTalker",slug:"fctalker"}]},
+        {label:"Utterance-Level Emotion Conditioning",models:[{label:"ECSS",dir:"ECSS",slug:"ecss"},{label:"JELLY",dir:"JELLY",slug:"jelly"}]},
+        {label:"Continuous Attribute Conditioning",models:[{label:"Proposed",dir:"AffectFlow",slug:"proposed"}]}
+      ];
+      const ablations = [
+        {label:"Embedding",dir:"Ablation_Embedding",slug:"embedding"},
+        {label:"GRU",dir:"Ablation_GRU",slug:"gru"},
+        {label:"GRU-DialogueRNN",dir:"Ablation_DialogueRNN",slug:"gru-dialoguernn"},
+        {label:"Proposed",dir:"AffectFlow",slug:"proposed"}
+      ];
+      const metrics = {
+        raw:{
+          "5_1_d2442":{BaseCSS:[3.987,0.421],FCTalker:[5.054,0.130],ECSS:[2.537,0.705],JELLY:[2.865,0.501],Proposed:[2.183,0.857]},
+          "6_1_d1583":{BaseCSS:[2.573,0.718],FCTalker:[2.559,0.690],ECSS:[3.246,0.325],JELLY:[2.516,0.693],Proposed:[3.437,0.137]},
+          "4_1_d1248":{BaseCSS:[4.785,-0.090],FCTalker:[5.541,-0.362],ECSS:[5.789,-0.020],JELLY:[5.180,-0.353],Proposed:[3.323,0.134]},
+          "4_1_d808":{BaseCSS:[7.23,-0.105],FCTalker:[8.76,-0.351],ECSS:[5.61,-0.110],JELLY:[5.77,-0.023],Proposed:[3.19,0.436]},
+          "9_1_d2531":{BaseCSS:[4.173,0.097],FCTalker:[2.972,0.513],ECSS:[4.634,-0.323],JELLY:[2.752,0.529],Proposed:[3.639,0.518]},
+          "5_1_d312":{BaseCSS:[4.465,0.369],FCTalker:[4.993,0.154],ECSS:[5.771,-0.041],JELLY:[4.637,0.380],Proposed:[5.045,0.179]}
+        },
+        aligned:{
+          "5_1_d2442":{BaseCSS:[3.075,0.857],FCTalker:[3.136,0.913],ECSS:[1.736,0.905],JELLY:[2.565,0.938],Proposed:[1.701,0.882]},
+          "6_1_d1583":{BaseCSS:[2.865,0.630],FCTalker:[2.131,0.857],ECSS:[1.930,0.866],JELLY:[2.628,0.628],Proposed:[1.850,0.857]},
+          "4_1_d1248":{BaseCSS:[3.063,0.408],FCTalker:[2.656,0.671],ECSS:[2.121,0.716],JELLY:[2.421,0.607],Proposed:[3.462,0.599]},
+          "4_1_d808":{BaseCSS:[3.273,0.452],FCTalker:[5.049,0.308],ECSS:[2.771,0.768],JELLY:[2.761,0.582],Proposed:[1.939,0.785]},
+          "9_1_d2531":{BaseCSS:[1.565,0.877],FCTalker:[1.332,0.915],ECSS:[1.463,0.864],JELLY:[2.268,0.733],Proposed:[2.550,0.786]},
+          "5_1_d312":{BaseCSS:[3.600,0.608],FCTalker:[3.834,0.364],ECSS:[4.447,0.600],JELLY:[3.211,0.588],Proposed:[3.550,0.562]}
+        }
+      };
+      const ablationMetrics = {
+        raw:{
+          "5_1_d2442":{"Embedding":[3.501,0.760],"GRU":[2.996,0.749],"GRU-DialogueRNN":[3.546,0.813],"Proposed":[2.183,0.857]},
+          "6_1_d1583":{"Embedding":[3.266,0.262],"GRU":[4.604,0.002],"GRU-DialogueRNN":[3.950,0.475],"Proposed":[3.437,0.137]},
+          "4_1_d1248":{"Embedding":[3.898,0.155],"GRU":[4.238,-0.148],"GRU-DialogueRNN":[3.517,0.221],"Proposed":[3.323,0.134]},
+          "4_1_d808":{"Embedding":[3.777,0.136],"GRU":[3.826,0.293],"GRU-DialogueRNN":[4.083,0.479],"Proposed":[3.185,0.436]},
+          "9_1_d2531":{"Embedding":[4.793,-0.193],"GRU":[5.356,-0.149],"GRU-DialogueRNN":[3.060,0.638],"Proposed":[3.639,0.518]},
+          "5_1_d312":{"Embedding":[5.601,-0.164],"GRU":[5.555,-0.041],"GRU-DialogueRNN":[4.784,0.217],"Proposed":[5.045,0.179]}
+        },
+        aligned:{
+          "5_1_d2442":{"Embedding":[3.205,0.861],"GRU":[3.350,0.850],"GRU-DialogueRNN":[3.336,0.794],"Proposed":[1.701,0.882]},
+          "6_1_d1583":{"Embedding":[3.150,0.348],"GRU":[1.993,0.797],"GRU-DialogueRNN":[2.559,0.748],"Proposed":[1.850,0.857]},
+          "4_1_d1248":{"Embedding":[2.591,0.636],"GRU":[2.825,0.601],"GRU-DialogueRNN":[3.011,0.538],"Proposed":[3.462,0.599]},
+          "4_1_d808":{"Embedding":[2.491,0.734],"GRU":[2.515,0.697],"GRU-DialogueRNN":[2.608,0.752],"Proposed":[1.939,0.785]},
+          "9_1_d2531":{"Embedding":[2.343,0.873],"GRU":[2.928,0.876],"GRU-DialogueRNN":[2.013,0.848],"Proposed":[2.550,0.786]},
+          "5_1_d312":{"Embedding":[3.428,0.561],"GRU":[3.820,0.447],"GRU-DialogueRNN":[3.182,0.661],"Proposed":[3.550,0.562]}
+        }
+      };
+
+      const audio = (src, model="") => `<audio controls preload="metadata"${model?` data-model="${model}"`:""}><source src="${src}" type="audio/wav"></audio>`;
+      function scriptBox(sample) {
+        return `<div class="script-box"><div><div class="turn-label">Previous Turn</div>${sample.previous.map(x=>`<p class="turn-text">${x}</p>`).join("")}<div class="turn-label">Current Turn</div><p class="turn-text">${sample.current}</p></div><div class="previous-audio"><div class="audio-label">Previous Turn Speech</div>${audio(`./wavs/ref/${sample.id}.wav`)}</div></div>`;
+      }
+      function reference(sample) {
+        return `<div class="category-title">Reference Speech</div><div class="reference-grid"><div class="reference-item"><div class="audio-label">Ground Truth</div>${audio(`./wavs/GT/${sample.id}.wav`,"Ground Truth")}</div><div class="reference-item"><div class="audio-label">Vocoded</div>${audio(`./wavs/Vocoded/${sample.id}.wav`,"Vocoded")}</div></div>`;
+      }
+      function modelRow(sample, model) {
+        const value=metrics[mode][sample.id][model.label];
+        const ours=model.label==="Proposed";
+        const caption=mode==="raw"?"Pitch: Ground Truth and model F0 on their original time axes.":"Pitch: Ground Truth and model F0 over matching normalized word intervals.";
+        const playhead=mode==="raw"?'<div class="pitch-playhead" aria-hidden="true"></div>':"";
+        return `<article class="system-row${ours?" proposed-row":""}" data-model-row="${model.label}"><div class="system-name${ours?" ours":""}">${model.label}</div><figure class="pitch-figure"><div class="pitch-image-wrap" data-axis-left="0.10" data-axis-right="0.98"><img class="pitch-image" src="./Figures/pitch_${mode}_${sample.id}_${model.slug}.png" alt="Ground Truth versus ${model.label} pitch contours for sample ${sample.id}" loading="lazy" decoding="async">${playhead}</div><figcaption class="pitch-caption">${caption}</figcaption></figure><div class="pitch-metrics" aria-label="Pitch similarity metrics"><div class="pitch-metric">F0 RMSE (semitones): ${value[0].toFixed(2)}</div><div class="pitch-metric">Pitch correlation: ${value[1].toFixed(3)}</div></div><div class="system-audio">${audio(`./wavs/${model.dir}/${sample.id}.wav`,model.label)}</div></article>`;
+      }
+      function ablationRow(sample, model) {
+        const value=ablationMetrics[mode][sample.id][model.label];
+        const ours=model.label==="Proposed";
+        const caption=mode==="raw"?"Pitch: Ground Truth and ablation output F0 on their original time axes.":"Pitch: Ground Truth and ablation output F0 over matching normalized word intervals.";
+        const playhead=mode==="raw"?'<div class="pitch-playhead" aria-hidden="true"></div>':"";
+        return `<article class="system-row${ours?" proposed-row":""}" data-model-row="${model.label}"><div class="system-name${ours?" ours":""}">${model.label}</div><figure class="pitch-figure"><div class="pitch-image-wrap" data-axis-left="0.10" data-axis-right="0.98"><img class="pitch-image" src="./Figures/pitch_${mode}_ablation_${sample.id}_${model.slug}.png" alt="Ground Truth versus ${model.label} ablation pitch contours for sample ${sample.id}" loading="eager" fetchpriority="low" decoding="async">${playhead}</div><figcaption class="pitch-caption">${caption}</figcaption></figure><div class="pitch-metrics" aria-label="Pitch similarity metrics"><div class="pitch-metric">F0 RMSE (semitones): ${value[0].toFixed(2)}</div><div class="pitch-metric">Pitch correlation: ${value[1].toFixed(3)}</div></div><div class="system-audio">${audio(`./wavs/${model.dir}/${sample.id}.wav`,model.label)}</div></article>`;
+      }
+      function conversationCard(sample,index) {
+        let systems="";
+        categories.forEach(category=>{systems+=`<div class="category-title">${category.label}</div><div class="system-grid${category.models.length===1?" single":""}">`;category.models.forEach(model=>systems+=modelRow(sample,model));systems+="</div>";});
+        return `<section class="sample-card" data-section="conversation" data-sample-id="${sample.id}">${scriptBox(sample)}${reference(sample)}${systems}<div class="playing-status" aria-live="polite"></div></section>`;
+      }
+      function ablationCard(sample,index) {
+        const items=ablations.map(model=>ablationRow(sample,model)).join("");
+        return `<section class="sample-card" data-section="ablation" data-sample-id="${sample.id}">${scriptBox(sample)}${reference(sample)}<div class="category-title">Ablation Variants</div><div class="system-grid">${items}</div><div class="playing-status" aria-live="polite"></div></section>`;
+      }
+
+      let activeAudio=null, activeRows=[], animationFrame=null;
+      function resetRows(){document.querySelectorAll(".system-row").forEach(row=>{row.classList.remove("is-playing");const line=row.querySelector(".pitch-playhead");if(line){line.style.left="10%";line.classList.remove("is-visible");}});document.querySelectorAll(".playing-status").forEach(x=>x.textContent="");activeRows=[];}
+      function pairDuration(card,row,fallback){const gt=card.querySelector('audio[data-model="Ground Truth"]'),modelAudio=row.querySelector("audio[data-model]");const values=[gt,modelAudio,fallback].map(x=>x?x.duration:NaN).filter(x=>Number.isFinite(x)&&x>0);return values.length?Math.max(...values):0;}
+      function updatePlayheads(){if(!activeAudio||mode!=="raw")return;const card=activeAudio.closest(".sample-card[data-sample-id]");activeRows.forEach(row=>{const wrap=row.querySelector(".pitch-image-wrap"),line=row.querySelector(".pitch-playhead"),duration=pairDuration(card,row,activeAudio),ratio=duration?Math.min(Math.max(activeAudio.currentTime/duration,0),1):0,left=Number(wrap.dataset.axisLeft),right=Number(wrap.dataset.axisRight);line.style.left=`${(left+(right-left)*ratio)*100}%`;});if(!activeAudio.paused&&!activeAudio.ended)animationFrame=requestAnimationFrame(updatePlayheads);}
+      function initializeAudio(){const all=[...document.querySelectorAll("audio")];all.forEach(item=>{item.addEventListener("play",()=>{all.forEach(other=>{if(other!==item&&!other.paused)other.pause();});if(animationFrame!==null)cancelAnimationFrame(animationFrame);resetRows();activeAudio=item;const card=item.closest(".sample-card[data-sample-id]");if(!card)return;const model=item.dataset.model,status=card.querySelector(".playing-status");if(!model)return;status.textContent=`Playing: ${model}`;if(model==="Ground Truth")activeRows=[...card.querySelectorAll(".system-row")];else if(model!=="Vocoded"){const row=card.querySelector(`[data-model-row="${model}"]`);if(row)activeRows=[row];}activeRows.forEach(row=>{row.classList.add("is-playing");const line=row.querySelector(".pitch-playhead");if(line)line.classList.add("is-visible");});updatePlayheads();});item.addEventListener("pause",()=>{if(item!==activeAudio||item.ended)return;if(animationFrame!==null)cancelAnimationFrame(animationFrame);const card=item.closest(".sample-card[data-sample-id]");if(card&&item.dataset.model)card.querySelector(".playing-status").textContent=`Paused: ${item.dataset.model}`;});item.addEventListener("ended",()=>{if(item!==activeAudio)return;if(animationFrame!==null)cancelAnimationFrame(animationFrame);activeAudio=null;resetRows();});});}
+
+      document.getElementById("demo-samples").innerHTML=conversationSamples.map(conversationCard).join("");
+      document.getElementById("ablation-samples").innerHTML=samples.map(ablationCard).join("");
+      initializeAudio();
+    })();
+  </script>
+</body>
+</html>
